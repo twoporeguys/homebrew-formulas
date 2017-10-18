@@ -15,10 +15,9 @@ class Librpc < Formula
 
   def install
     system "mkdir", "-p", "build"
-    system "cd", "build"  
-    system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=/usr/local/bin/python2"
-    system "make"
-    system "make", "install"
+    system "cd", "build", "&&", "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=/usr/local/bin/python2"
+    system "cd", "build", "&&", "make"
+    system "cd", "build", "&&", "make", "install"
   end
 
   test do
