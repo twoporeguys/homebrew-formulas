@@ -14,7 +14,8 @@ class Librpc < Formula
   depends_on "cython"
 
   def install
-    system "make", "all", "install"
+    system "make", "all"
+    system "make", "install"
   end
 
   test do
