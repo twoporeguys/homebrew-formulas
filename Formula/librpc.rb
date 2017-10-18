@@ -14,10 +14,8 @@ class Librpc < Formula
   depends_on "cython"
 
   def install
-    system "mkdir", "-p", "build"
-    system "cd", "build", "&&", "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=/usr/local/bin/python2"
-    system "cd", "build", "&&", "make"
-    system "cd", "build", "&&", "make", "install"
+    system "make", "PYTHON_VERSION=python2"
+    system "make", "install"
   end
 
   test do
