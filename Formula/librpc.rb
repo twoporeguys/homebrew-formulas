@@ -11,14 +11,14 @@ class Librpc < Formula
   depends_on "libusb"
   depends_on "libyaml"
   depends_on "python"
-  depends_on "cython"
 
   def install
-    system "make", "PYTHON_VERSION=python2"
+    system "pip2.7", "install", "Cython"	    
+    system "make", "PYTHON_VERSION=python2.7"
     system "make", "install"
   end
 
   test do
-    system "/usr/local/bin/python2", "-c", "'import librpc'"
+	  system "/usr/local/bin/python2.7", "-c", "'import librpc'"
   end
 end
