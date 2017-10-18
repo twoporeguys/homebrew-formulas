@@ -14,12 +14,14 @@ class Librpc < Formula
   depends_on "cython"
 
   def install
-    system "cmake", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=/usr/local/bin/python2"
+    system "mkdir", "-p", "build"
+    system "cd", "build"  
+    system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=/usr/local/bin/python2"
     system "make"
     system "make", "install"
   end
 
   test do
-    system "python3", "-c", "'import librpc'"
+    system "/usr/local/bin/python2", "-c", "'import librpc'"
   end
 end
