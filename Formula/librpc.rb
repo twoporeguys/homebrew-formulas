@@ -14,6 +14,7 @@ class Librpc < Formula
 
   def install
     system "python2.7", "-m", "pip", "install", "--user", "Cython"
+    system "python2.7", "-m", "pip", "install", "--user", "enum34"
     system "make", "PYTHON_VERSION=python2.7", "INSTALL_PREFIX=#{prefix}"
     system "make", "install"
   end
