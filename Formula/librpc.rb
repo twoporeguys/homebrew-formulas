@@ -13,7 +13,7 @@ class Librpc < Formula
   depends_on "python"
 
   def install
-    system "pip2.7", "install", "Cython"	    
+    system "/usr/local/bin/pip2.7", "install", "Cython"	    
     system "make", "PYTHON_VERSION=python2.7"
     system "make", "install"
   end
