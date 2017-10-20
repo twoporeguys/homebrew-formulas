@@ -20,16 +20,16 @@ class Librpc < Formula
   def install
     if build.with? "python"
         pyver = Language::Python.major_minor_version "python2"
-        system "#{pyver}", "-m", "pip", "install", "--user", "Cython"
-	system "#{pyver}", "-m", "pip", "install", "--user", "enum34"
-	system "make", "PYTHON_VERSION=#{pyver}", "INSTALL_PREFIX=#{prefix}"
+        system "python#{pyver}", "-m", "pip", "install", "--user", "Cython"
+	system "python#{pyver}", "-m", "pip", "install", "--user", "enum34"
+	system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}"
 	system "make", "install"
     end
 
     if build.with? "python3"
         pyver = Language::Python.major_minor_version "python3"
-        system "#{pyver}", "-m", "pip", "install", "--user", "Cython"
-	system "make", "PYTHON_VERSION=#{pyver}", "INSTALL_PREFIX=#{prefix}"
+        system "python#{pyver}", "-m", "pip", "install", "--user", "Cython"
+	system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}"
 	system "make", "install"
     end
 
