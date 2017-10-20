@@ -10,6 +10,7 @@ class Librpc < Formula
 
   depends_on :python => :optional
   depends_on :python3 => :optional
+  depends_on "kivy" => :optional
 
   depends_on "cmake"
   depends_on "libsoup"
