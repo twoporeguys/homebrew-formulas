@@ -33,7 +33,7 @@ class Librpc < Formula
 	system "make", "install"
     end
 
-    if build.without? "python" && build.without? "python3" 
+    if build.without?("python") && build.without?("python3")
 	system "make", "BUILD_PYTHON=OFF", "INSTALL_PREFIX=#{prefix}"
 	system "make", "install"
     end
