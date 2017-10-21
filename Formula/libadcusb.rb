@@ -10,6 +10,7 @@ class Libadcusb < Formula
   depends_on :python => :optional
   depends_on :python3 => :optional
 
+  depends_on "cmake"
   depends_on "glib"
   depends_on "libusb"
   depends_on "numpy"
