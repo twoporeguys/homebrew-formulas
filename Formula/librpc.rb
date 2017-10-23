@@ -24,7 +24,7 @@ class Librpc < Formula
     end 
 
     if build.with? "kivy"
-      system "make", "PYTHON_VERSION=kivy", "INSTALL_PREFIX=#{prefix}"
+      system "make", "PYTHON_VERSION=kivy"
       system "make", "install"
     end
 
