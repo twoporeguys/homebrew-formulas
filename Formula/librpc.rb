@@ -24,10 +24,9 @@ class Librpc < Formula
     end 
 
     if build.with? "kivy"
-      pyver = Language::Python.major_minor_version "kivy"
       system "kivy", "-m", "pip", "install", "--user", "Cython==0.26.1"
       system "kivy", "-m", "pip", "install", "--user", "enum34"
-      system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}"
+      system "make", "kivy", "INSTALL_PREFIX=#{prefix}"
       system "make", "install"
     end
 
