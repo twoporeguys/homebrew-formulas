@@ -26,8 +26,7 @@ class Librpc < Formula
     if build.with? "kivy"
       system "make", "BUILD_PYTHON=OFF", "INSTALL_PREFIX=#{prefix}"
       system "make", "install"
-      system "make", "PYTHON_VERSION=/Applications/Kivy.app/Contents/Resources/python", "INSTALL_PREFIX=/Applications/Kivy.app/Contents/Resources/venv/"
-      system "make", "install"
+      system "kivy", "-m", "pip", "install", "-e", "git+https://github.com/twoporeguys/librpc.git#egg=librpc&subdirectory=python"
     end
 
     if build.with? "python"
