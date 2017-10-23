@@ -6,7 +6,6 @@ class Libadcusb < Formula
 
   option "with-python", "Build with Python2 bindings"
   option "with-python3", "Build with Python3 binding"
-  option "with-kivy", "Building with bindings for previously installed Kivy binary"
  
   depends_on :python => :optional
   depends_on :python3 => :optional
@@ -27,13 +26,6 @@ class Libadcusb < Formula
 
     if build.with? "python3"
       pyver = Language::Python.major_minor_version "python3"
-    end
-
-    if build.with? "kivy"
-      pyver = Language::Python.major_minor_version "kivy"
-      system "kivy", "-m", "pip", "install", "--user", "Cython==0.26.1"
-      system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}"
-      system "make", "install"
     end
 
     if build.with?("python") || build.with?("python3")

@@ -6,7 +6,6 @@ class Librpc < Formula
 
   option "with-python", "Build with Python2 bindings"
   option "with-python3", "Build with Python3 binding"
-  option "with-kivy", "Building with bindings for previously installed Kivy binary"
 
   depends_on :python => :optional
   depends_on :python3 => :optional
@@ -23,12 +22,6 @@ class Librpc < Formula
       odie "For now --with-python and --with-python3 options are mutually exclusive"
     end 
 
-    if build.with? "kivy"
-      system "make", "BUILD_PYTHON=OFF", "INSTALL_PREFIX=#{prefix}"
-      system "make", "install"
-      system "kivy", "-m", "pip", "install", "-e", "git+https://github.com/twoporeguys/librpc.git#egg=librpc&subdirectory=python"
-    end
-
     if build.with? "python"
       pyver = Language::Python.major_minor_version "python2"
       system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
@@ -44,7 +37,7 @@ class Librpc < Formula
       system "make", "install"
     end
     
-    if build.without?("python") && build.without?("python3") && build.without?("kivy")
+    if build.without?("python") && build.without?("python3")
       system "make", "BUILD_PYTHON=OFF", "INSTALL_PREFIX=#{prefix}"
       system "make", "install"
     end
