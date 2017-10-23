@@ -24,8 +24,6 @@ class Librpc < Formula
     end 
 
     if build.with? "kivy"
-      system "kivy", "-m", "pip", "install", "--user", "Cython==0.26.1"
-      system "kivy", "-m", "pip", "install", "--user", "enum34"
       system "make", "kivy", "INSTALL_PREFIX=#{prefix}"
       system "make", "install"
     end
