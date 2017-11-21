@@ -1,4 +1,4 @@
-class Sdl2MixerAT201 < Formula
+class Sdl2Mixer < Formula
   desc "Sample multi-channel audio mixer library"
   homepage "https://www.libsdl.org/projects/SDL_mixer/"
   url "https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.1.tar.gz"
