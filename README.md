@@ -24,6 +24,13 @@ Then, on you type these commands to install things:
     In [3]: client.connect('usb://CharlieAssembly84')
     In [4]: client.call_sync('adc.identify')
 
+## For sample prep:
+
+Same prerequisites as above, but really, you should be able to just type
+
+    brew tap twoporeguys/homebrew-formulas  # Add TPG formulas to your homebrew
+    brew install sampleprep 
+
 ## Troubleshooting
 
 ### librpc ModuleNotFoundError
@@ -45,3 +52,10 @@ Error:
 
 Solution:
 
+### Weird errors
+
+Try reinstalling all the things:
+
+    pip3 uninstall pygobject cairocffi matplotlib
+    brew uninstall --ignore-dependencies libadcusb librpc python3
+    brew install sampleprep
