@@ -1,5 +1,7 @@
 class Sampleprep < Formula
   desc "All things needed for TPG sampleprep"
+  url "https://github.com/twoporeguys/librpc/archive/v0.3.2.tar.gz"
+  sha256 "9fdc9c8ce68351b32881c7c9491223ec7b1285eca1f7417ea739d3e916eb4e26"
 
   depends_on "librpc" => :python3
   depends_on "libadcusb" => :python3
