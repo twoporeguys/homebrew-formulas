@@ -6,6 +6,7 @@ class Librpc < Formula
 
   option "with-python", "Build with Python2 bindings"
   option "with-python3", "Build with Python3 binding"
+  option "with-dbgsym", "Build with debug symbols"
 
   depends_on :python => :optional
   depends_on :python3 => :optional
@@ -22,25 +23,30 @@ class Librpc < Formula
       odie "For now --with-python and --with-python3 options are mutually exclusive"
     end 
 
+    system "mkdir", "-p", "build"
+    build_type = build.with?("dbgsym") ? "Debug" : "Release"
+    
     if build.with? "python"
       pyver = Language::Python.major_minor_version "python2"
       system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
       system "pip#{pyver}", "install", "--user", "enum34"
-      system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}", "ENABLE_LIBDISPATCH=ON"
+      system "cd", "build", "&&", "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DCMAKE_BUILD_TYPE=#{build_type}"
       system "make", "install"
     end
 
     if build.with? "python3"
       pyver = Language::Python.major_minor_version "python3"
       system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
-      system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}", "ENABLE_LIBDISPATCH=ON"
+      system "cd", "build", "&&", "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DCMAKE_BUILD_TYPE=#{build_type}"
       system "make", "install"
     end
     
     if build.without?("python") && build.without?("python3")
-      system "make", "BUILD_PYTHON=OFF", "INSTALL_PREFIX=#{prefix}", "ENABLE_LIBDISPATCH=ON"
+      system "cd", "build", "&&", "cmake", "..", "-DBUILD_LIBUSB=ON", "-DBUILD_PYTHON=OFF", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DCMAKE_BUILD_TYPE=#{build_type}"
       system "make", "install"
     end
+
+    system "make", "-C", "build", "install"
   end
 
   test do
