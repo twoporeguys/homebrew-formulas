@@ -18,6 +18,8 @@ class Librpc < Formula
   depends_on "libusb"
   depends_on "libyaml"
 
+  skip_clean ['bin', 'lib']
+
   def install
     if build.with?("python") && build.with?("python3")
       odie "For now --with-python and --with-python3 options are mutually exclusive"
