@@ -18,7 +18,7 @@ class Librpc < Formula
   depends_on "libusb"
   depends_on "libyaml"
 
-  skip_clean ['bin', 'lib']
+  skip_clean ['librpc.dylib']
 
   def install
     if build.with?("python") && build.with?("python3")
