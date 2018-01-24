@@ -27,17 +27,17 @@ class Librpc < Formula
         pyver = Language::Python.major_minor_version "python2"
         system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
         system "pip#{pyver}", "install", "--user", "enum34"
-        system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON"
+        system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
 
       if build.with? "python3"
         pyver = Language::Python.major_minor_version "python3"
         system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
-        system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON"
+        system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
     
       if build.without?("python") && build.without?("python3")
-        system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DBUILD_PYTHON=OFF", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON"
+        system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DBUILD_PYTHON=OFF", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
 
       system "make", "install"
