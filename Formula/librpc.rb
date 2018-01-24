@@ -1,8 +1,8 @@
 class Librpc < Formula
   desc "A general-purpose IPC/RPC library supporting asynchronous notifications, data streaming, exchange of file descriptors and WebSockets endpoint. Loosely based on Apple XPC interface."
   homepage "https://github.com/twoporeguys/librpc"
-  url "https://github.com/twoporeguys/librpc/archive/v0.3.5.tar.gz"
-  sha256 "bc2b584a5447c2e70de56b48e8fb4fdff2085e2bfc9e8ee77d44492369e47842"
+  url "https://github.com/twoporeguys/librpc/archive/v0.3.6.tar.gz"
+  sha256 "f2ac18b9867b247618e91171c7c8c7e85d30ad4bff574b80d803907f5e6a43b3"
 
   option "with-python", "Build with Python2 bindings"
   option "with-python3", "Build with Python3 binding"
