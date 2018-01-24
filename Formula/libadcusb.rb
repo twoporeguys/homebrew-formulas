@@ -1,8 +1,8 @@
 class Libadcusb < Formula
   desc "ADC data transfer library"
   homepage "https://github.com/twoporeguys/libadcusb"
-  url "https://github.com/twoporeguys/libadcusb/archive/v0.1.5.tar.gz"
-  sha256 "0508380c13d0138530034a326472a806b23047ea99777d559dbc4204f5c8f737"
+  url "https://github.com/twoporeguys/libadcusb/archive/v0.1.6.tar.gz"
+  sha256 "4046208626a1ed63d6d7f7315d463f9a5c9d7ce99533ab10bb80bfb523543c2c"
 
   option "with-python", "Build with Python2 bindings"
   option "with-python3", "Build with Python3 binding"
