@@ -1,5 +1,5 @@
 class Sdl2Mixer < Formula
-  desc "Sample multi-channel audio mixer library"
+  desc "Sample multi-channel audio mixer library, fixed for POP Classic"
   homepage "https://www.libsdl.org/projects/SDL_mixer/"
   url "https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.1.tar.gz"
   sha256 "5a24f62a610249d744cbd8d28ee399d8905db7222bf3bdbc8a8b4a76e597695f"
