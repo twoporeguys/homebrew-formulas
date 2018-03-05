@@ -7,8 +7,8 @@ class Librpc < Formula
   option "with-python", "Build with Python2 bindings"
   option "with-python3", "Build with Python3 binding"
 
+  depends_on "python@2" => :optional
   depends_on "python" => :optional
-  depends_on "python3" => :optional
 
   depends_on "cmake"
   depends_on "libsoup"
