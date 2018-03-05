@@ -4,8 +4,8 @@ class Libadcusb < Formula
   url "https://github.com/twoporeguys/libadcusb/archive/v0.1.6.tar.gz"
   sha256 "4046208626a1ed63d6d7f7315d463f9a5c9d7ce99533ab10bb80bfb523543c2c"
 
-  option "with-python", "Build with Python2 bindings"
-  option "with-python3", "Build with Python3 binding"
+  option "with-python@2", "Build with Python2 bindings"
+  option "with-python", "Build with Python3 binding"
  
   depends_on "python@2" => :optional
   depends_on "python" => :optional
@@ -16,25 +16,25 @@ class Libadcusb < Formula
   depends_on "numpy"
 
   def install
-    if build.with?("python") && build.with?("python3")
-      odie "For now --with-python and --with-python3 options are mutually exclusive"
+    if build.with?("python@2") && build.with?("python")
+      odie "For now --with-python@2 and --with-python options are mutually exclusive"
     end 
 
-    if build.with? "python"
+    if build.with? "python@2"
       pyver = Language::Python.major_minor_version "python2"
     end
 
-    if build.with? "python3"
+    if build.with? "python"
       pyver = Language::Python.major_minor_version "python3"
     end
 
-    if build.with?("python") || build.with?("python3")
+    if build.with?("python@2") || build.with?("python")
       system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
       system "make", "PYTHON_VERSION=python#{pyver}", "INSTALL_PREFIX=#{prefix}"
       system "make", "install"
     end
     
-    if build.without?("python") && build.without?("python3")
+    if build.without?("python@2") && build.without?("python")
       system "make", "BUILD_PYTHON=OFF", "INSTALL_PREFIX=#{prefix}"
       system "make", "install"
     end

@@ -4,8 +4,8 @@ class Librpc < Formula
   url "https://github.com/twoporeguys/librpc/archive/v0.3.6.tar.gz"
   sha256 "f2ac18b9867b247618e91171c7c8c7e85d30ad4bff574b80d803907f5e6a43b3"
 
-  option "with-python", "Build with Python2 bindings"
-  option "with-python3", "Build with Python3 binding"
+  option "with-python@2", "Build with Python2 bindings"
+  option "with-python", "Build with Python3 binding"
 
   depends_on "python@2" => :optional
   depends_on "python" => :optional
@@ -19,24 +19,24 @@ class Librpc < Formula
 
   def install
     mkdir "build" do 
-      if build.with?("python") && build.with?("python3")
-        odie "For now --with-python and --with-python3 options are mutually exclusive"
+      if build.with?("python@2") && build.with?("python")
+        odie "For now --with-python@2 and --with-python options are mutually exclusive"
       end 
 
-      if build.with? "python"
+      if build.with? "python@2"
         pyver = Language::Python.major_minor_version "python2"
         system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
         system "pip#{pyver}", "install", "--user", "enum34"
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
 
-      if build.with? "python3"
+      if build.with? "python"
         pyver = Language::Python.major_minor_version "python3"
         system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
     
-      if build.without?("python") && build.without?("python3")
+      if build.without?("python@2") && build.without?("python")
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DBUILD_PYTHON=OFF", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
 
