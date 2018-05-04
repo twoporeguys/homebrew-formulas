@@ -8,8 +8,8 @@ This assumes you are on a mac, have [homebrew](https://brew.sh/) installed and h
 Then, on you type these commands to install things:
 
     brew tap twoporeguys/homebrew-formulas  # Add TPG formulas to your homebrew
-    brew install librpc --with-python3      # Install librpc
-    brew install libadcusb --with-python3   
+    brew install librpc --with-python       # Install librpc with python3 (use --with-python@2 for python 2.7)
+    brew install libadcusb --with-python   
 
 
 ## Run and test
