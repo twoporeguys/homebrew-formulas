@@ -6,9 +6,10 @@ class Sampleprep < Formula
   url "https://github.com/twoporeguys/librpc/archive/v0.3.2.tar.gz"
   sha256 "9fdc9c8ce68351b32881c7c9491223ec7b1285eca1f7417ea739d3e916eb4e26"
 
-  depends_on "librpc"     => ["with-python3"]
-  depends_on "libadcusb"  => ["with-python3"]
-  depends_on "pygobject3" => ["with-python3", "gtk+3"]
+  depends_on "librpc"     => ["with-python"]
+  depends_on "libadcusb"  => ["with-python"]
+  depends_on "gtk+3"      => ["with-python"]
+  depends_on "pygobject3" => ["with-python"]
 
  def install
    pyver = Language::Python.major_minor_version "python3"
