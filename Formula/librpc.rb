@@ -32,7 +32,7 @@ class Librpc < Formula
 
       if build.with? "python"
         pyver = Language::Python.major_minor_version "python3"
-        system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
+        system "pip#{pyver}", "install", "--user", "Cython==0.28.4"
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
     
