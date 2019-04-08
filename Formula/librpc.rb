@@ -18,24 +18,24 @@ class Librpc < Formula
   depends_on "libyaml"
 
   def install
-    mkdir "build" do 
+    mkdir "build" do
       if build.with?("python@2") && build.with?("python")
         odie "For now --with-python@2 and --with-python options are mutually exclusive"
-      end 
+      end
 
       if build.with? "python@2"
         pyver = Language::Python.major_minor_version "python2"
-        system "pip#{pyver}", "install", "--user", "Cython==0.26.1"
+        system "pip#{pyver}", "install", "-U", "--user", "Cython==0.29.6"
         system "pip#{pyver}", "install", "--user", "enum34"
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
 
       if build.with? "python"
         pyver = Language::Python.major_minor_version "python3"
-        system "pip#{pyver}", "install", "--user", "Cython==0.28.4"
+        system "pip#{pyver}", "install", "-U", "--user", "Cython==0.29.6"
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DPYTHON_VERSION=python#{pyver}", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
-    
+
       if build.without?("python@2") && build.without?("python")
         system "cmake", "..", "-DBUILD_LIBUSB=ON", "-DBUILD_PYTHON=OFF", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DENABLE_LIBDISPATCH=ON", "-DBUILD_CPLUSPLUS=OFF"
       end
